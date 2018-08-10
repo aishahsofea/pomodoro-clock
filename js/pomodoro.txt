@@ -1,0 +1,116 @@
+const Clock = (_ => {
+
+    let interval;
+    const $timeLeft = document.querySelector("#time-left");
+    const $startStop = document.querySelector("#start-stop");
+    const $reset = document.querySelector("#reset");
+    const $timerLabel = document.querySelector("#timer-label");
+    const $activityIcon = document.querySelector(".activity-icon");
+
+    const $breakDecrement = document.querySelector("#break-decrement");
+    const $breakIncrement = document.querySelector("#break-increment");
+    const $breakLength = document.querySelector("#break-length");
+    $breakLength.innerHTML = 5;
+
+    const $sessionDecrement = document.querySelector("#session-decrement");
+    const $sessionIncrement = document.querySelector("#session-increment");
+    const $sessionLength = document.querySelector("#session-length");
+    $sessionLength.innerHTML = 25;
+    let min = $sessionLength.innerHTML - 1;
+    let sec = 60;
+
+    $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`
+
+
+    const init = _ => {
+        listeners();
+        styleChange();
+    }
+
+    const listeners = _ => {
+
+        $startStop.addEventListener("click", _ => {
+            if (!interval) {
+                interval = setInterval(_ => {
+                    if ((min !== 0 && sec !== 0) || (min === 0 && sec !== 0)) {
+                        sec--;
+                    } else if (min !== 0 && sec === 0) {
+                        min--;
+                        sec = 60;
+                    } else if (min === 0 && sec === 0) {
+                        $timeLeft.innerHTML = `${$breakLength.innerHTML}:00`;
+                        return;
+                    }
+                    let displayMin = min < 10 ? `0${min}` : min;
+                    let displaySec = sec < 10 ? `0${sec}` : sec;
+                    $timeLeft.innerHTML = `${displayMin}:${displaySec}`;
+                    $activityIcon.innerHTML = `<i class="fa fa-laptop"></i>`;
+                    $timerLabel.innerHTML = `session`;
+                },100)
+            } else {
+                clearInterval(interval);
+                interval = !interval;
+            }
+
+        });
+
+        $reset.addEventListener("click", _ => {
+            min = 24; sec = 60;
+            $breakLength.innerHTML = 5;
+            $sessionLength.innerHTML = 25;
+            $timeLeft.innerHTML = `25:00`;
+            $timerLabel.innerHTML = `use me!`;
+            $activityIcon.innerHTML = ``;
+            if (!interval) {
+                clearInterval(interval);
+            } else {
+                clearInterval(interval)
+                interval = !interval;
+            }
+        })
+
+        $breakDecrement.addEventListener("click", _ => {
+            if ($breakLength.innerHTML > 1) {
+                $breakLength.innerHTML--;
+            }
+        })
+
+        $breakIncrement.addEventListener("click", _ => {
+            if ($breakLength.innerHTML < 60) {
+                $breakLength.innerHTML++;
+            }
+        })
+
+        $sessionDecrement.addEventListener("click", _ => {
+            if ($sessionLength.innerHTML > 1) {
+                $sessionLength.innerHTML--;
+                $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
+                min = $sessionLength.innerHTML - 1;
+
+            }
+        })
+
+        $sessionIncrement.addEventListener("click", _ => {
+            if ($sessionLength.innerHTML < 60) {
+                $sessionLength.innerHTML++;
+                $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
+                min = $sessionLength.innerHTML - 1;
+            }
+        })
+    }
+
+    const styleChange = _ => {
+        if ($sessionLength.innerHTML === 0) {
+            $timeLeft.style.color = "red";
+        }
+    }
+
+
+
+    return {
+        init
+    }
+
+})();
+
+Clock.init();

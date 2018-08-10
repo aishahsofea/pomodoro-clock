@@ -1,0 +1,91 @@
+body {
+    background-color: #333333;
+}
+#title {
+    text-align: center;
+    font-family: 'Patua One', cursive;
+    font-size: 4.5rem;
+    color: #BAA378;
+}
+#wrapper {
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    text-align: center;
+}
+.block {
+    display: block;
+}
+.setter {
+    display: inline-block;
+    padding: 0 5rem;
+}
+.component {
+    display: inline-block;
+}
+.label {
+    font-family: 'Patua One', cursive;
+    font-size: 30px;
+    color: #9C8B79;
+}
+.icon-cursor {
+    cursor: pointer;
+    font-size: 30px;
+}
+.icon-cursor:active {
+    color: antiquewhite;
+}
+.length-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    padding: 0 5px;
+    color: #BEC0BB;
+}
+#time {
+    display: block;
+    border: 15px solid #DCBA87;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    margin: 2rem auto;
+    color: #BEC0BB;
+}
+.activity-icon {
+    display: block;
+    padding: 30px;
+    margin-top: 5.5rem;
+    transform: scale(5);
+
+}
+#time-left {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+}
+#timer-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
+    margin: 1rem;
+}
+.icons {
+    font-size: 2rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    display: inline-block;
+    color: #9C8B79;
+}
+.icons:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #BAA378;
+
+}
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

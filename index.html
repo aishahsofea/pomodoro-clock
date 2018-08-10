@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Orbitron|Patua+One" rel="stylesheet">
+    <title>Pomodoro Clock</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="noSelect">
+    <h1 id="title">Pomodoro Clock</h1>
+    <div id="wrapper">
+        <div class="block">
+            <div class="setter" id="break">
+                <div class="label" id="break-label">Break Length</div>
+                <div class="component icon-cursor" id="break-decrement"><i class="fa fa-angle-double-down length-icon"></i></div>
+                <div class="component length-num noSelect" id="break-length"></div>
+                <div class="component icon-cursor" id="break-increment"><i class="fa fa-angle-double-up length-icon"></i></div>
+            </div>
+            <div class="setter" id="session">
+                <div class="label" id="session-label">Session Length</div>
+                <div class="component icon-cursor" id="session-decrement"><i class="fa fa-angle-double-down length-icon"></i></div>
+                <div class="component length-num noSelect" id="session-length"></div>
+                <div class="component icon-cursor" id="session-increment"><i class="fa fa-angle-double-up length-icon"></i></div>
+            </div>
+        </div>
+        <div class="block">
+            <div id="time">
+                <div class="activity-icon"></div>
+                <div id="time-left"></div>
+                <div id="timer-label">use me!</div>
+            </div>
+            <div id="icons">
+                <div class="icons start-stop" id="start-stop"></div>
+                <!-- <div class="icons" id="start-stop"><i class="fa fa-pause"></i></div> -->
+                <div class="icons" id="reset"><i class="fa fa-refresh"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>
