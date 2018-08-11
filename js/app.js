@@ -27,10 +27,6 @@ const Clock = (_ => {
     $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`
     $startStop.innerHTML = `<i class="fa fa-play"></i>`;
 
-    const init = _ => {
-        listeners();
-    }
-
     const listeners = _ => {
 
         $startStop.addEventListener("click", _ => {
@@ -44,6 +40,10 @@ const Clock = (_ => {
                         sec--;
                     } else if (min === 0 && sec !== 0) {
                         sec--;
+                        $time.style.color = "#920412";
+                    } else if (min === 1 && sec === 0) {
+                        min--;
+                        sec = 59;
                         $time.style.color = "#920412";
                     } else if (min !== 0 && sec === 0) {
                         min--;
@@ -68,7 +68,7 @@ const Clock = (_ => {
                     let displaySec = sec < 10 ? `0${sec}` : sec;
                     $timeLeft.innerHTML = `${displayMin}:${displaySec}`;
                     $timerLabel.innerHTML = currentStatus;
-                }, 1000)
+                }, 500)
             } else {
                 clearInterval(interval);
                 interval = !interval;
@@ -105,6 +105,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$breakLength.innerHTML}:00`;
                     min = $breakLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -115,6 +116,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$breakLength.innerHTML}:00`;
                     min = $breakLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -125,6 +127,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
                     min = $sessionLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -135,6 +138,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
                     min = $sessionLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -142,33 +146,31 @@ const Clock = (_ => {
         $breakDecrement.addEventListener("click", _ => {
             if (!interval) {
                 breakDec();
-                $time.style.color = "#BEC0BB";
             }
         })
         $breakIncrement.addEventListener("click", _ => {
             if (!interval) {
                 breakInc();
-                $time.style.color = "#BEC0BB";
             }
         })
         $sessionDecrement.addEventListener("click", _ => {
             if (!interval) {
                 seshDec();
-                $time.style.color = "#BEC0BB";
             }
         });
         $sessionIncrement.addEventListener("click", _ => {
             if (!interval) {
                 seshInc();
-                $time.style.color = "#BEC0BB";
             }
         })
     }
 
+    
+
     return {
-        init
+        listeners
     }
 
 })();
 
-Clock.init();
+Clock.listeners();
