@@ -48,6 +48,10 @@ const Clock = (_ => {
                     } else if (min !== 0 && sec === 0) {
                         min--;
                         sec = 59;
+                    } else if (min === 1 && sec === 0) {
+                        min--;
+                        sec = 59;
+                        $time.style.color = "#920412";
                     } else if (min === 0 && sec === 0) {
                         audio.play();
                         $time.style.color = "#BEC0BB";
@@ -105,6 +109,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$breakLength.innerHTML}:00`;
                     min = $breakLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -115,6 +120,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$breakLength.innerHTML}:00`;
                     min = $breakLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -125,6 +131,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
                     min = $sessionLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -135,6 +142,7 @@ const Clock = (_ => {
                     $timeLeft.innerHTML = `${$sessionLength.innerHTML}:00`;
                     min = $sessionLength.innerHTML - 1;
                     sec = 60;
+                    $time.style.color = "#BEC0BB";
                 }
             }
         }
@@ -142,25 +150,21 @@ const Clock = (_ => {
         $breakDecrement.addEventListener("click", _ => {
             if (!interval) {
                 breakDec();
-                $time.style.color = "#BEC0BB";
             }
         })
         $breakIncrement.addEventListener("click", _ => {
             if (!interval) {
                 breakInc();
-                $time.style.color = "#BEC0BB";
             }
         })
         $sessionDecrement.addEventListener("click", _ => {
             if (!interval) {
                 seshDec();
-                $time.style.color = "#BEC0BB";
             }
         });
         $sessionIncrement.addEventListener("click", _ => {
             if (!interval) {
                 seshInc();
-                $time.style.color = "#BEC0BB";
             }
         })
     }
